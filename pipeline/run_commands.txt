@@ -1,0 +1,24 @@
+
+docker run -it --rm \
+  --network=pipeline_default \
+  data_ingest:v001 \
+  --pg-user=root \
+  --pg-pass=root \
+  --pg-host=pgdatabase \
+  --pg-port=5432 \
+  --pg-db=ny_taxi \
+  --chunksize=100000 \
+  --table-name=green_tripdata_2025-11 \
+  --file-name=green_tripdata_2025-11.parquet
+
+docker run -it --rm \
+  --network=pipeline_default \
+  data_ingest:v001 \
+  --pg-user=root \
+  --pg-pass=root \
+  --pg-host=pgdatabase \
+  --pg-port=5432 \
+  --pg-db=ny_taxi \
+  --chunksize=100000 \
+  --table-name=taxi_zone_lookup \
+  --file-name=taxi_zone_lookup.csv
